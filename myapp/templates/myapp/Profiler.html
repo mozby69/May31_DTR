@@ -1,0 +1,39 @@
+{% extends "myapp/base.html" %}
+{% load static %}
+
+{% block content %} 
+
+
+
+ <link href= "{%static 'css/Profiler.css'%}" rel="stylesheet">
+ <link href= "{%static 'css/backdrop.css'%}" rel="stylesheet"> 
+ <link href= "{%static 'css/reset.css'%}" rel="stylesheet">
+
+    <div class="Wrapper">
+        <div class="Container">
+            {% include 'myapp/backdrop.html' %}
+            <div class="Container_Profile">
+                <div class="SecondOuterCircle">
+                    <div class=" FirstOuterCircle">
+                        <div class=" MainCircle">
+                            <div class="ProfilerLogo">
+                                <img src="{% static 'images/LogoProfilerEmp.png' %}">
+                            </div>
+                            <div class="CompanyNameImg">
+                                <img src="{% static 'images/LogoEmbProfiler.png' %}">
+                            </div>
+                            <div class="GetStarted">
+                                <a href="{% url 'ProfilerForm' %}" id="getStartedButton">Get Started -></a>
+                            </div>                              
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+
+{% endblock content %}
+
+
+{% comment %} {% endblock content %} {% endcomment %}

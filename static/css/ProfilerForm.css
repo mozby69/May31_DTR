@@ -1,0 +1,283 @@
+
+.Header-Section-Form2,
+.Header-Section-Form3,
+.Header-Section-Form4{
+    padding-left: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+
+
+
+
+
+/* Personal information grid style */
+.Surename{
+    grid-area: surename;
+}
+.Firstname{
+    grid-area: firstname;
+}
+.Middlename{
+    grid-area: middlename;
+}
+.Suffix{
+    grid-area: suffix;
+}
+.Gender{
+    grid-area: gender;
+}
+.Birthday{
+    grid-area: birthday;
+}
+.Birthplace{
+    grid-area: birthplace;
+}
+.Age{
+    grid-area: age;
+}
+.CivilStatus{
+    grid-area: civilstatus;
+}
+
+.PersonalInfo{
+    padding-block: 1rem;
+    display: grid;
+    grid-template-areas: 
+    'surename firstname middlename suffix gender'
+    'birthday birthplace birthplace age civilstatus'
+    ;
+    gap: 2rem;
+    padding-left: 2rem;
+}
+
+/* Address flex style */
+.EmpAddress,
+.EmpJobDetails{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    padding-left: 2rem;
+    gap: 2rem;
+}
+.currentAdd,
+.homeAdd{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 1rem;
+}
+
+
+/* Employee About job sstyle flex */
+
+.aboutJob,
+.empContact{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 1rem;
+    padding-top: 1rem;
+}
+.empContactInput{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+.empContactInput input{
+    width: 100%;
+}
+
+
+/* Personal Identification flex Style */
+.PersonalID{
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    width: 100%;
+    margin-top: 1rem;
+}
+.PersonalID input{
+    width: 100%;
+}
+
+
+/* Mother Maiden, Father, and Spouse information */
+.FamilyBG{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.MothersInfo,
+.FatherInfo,
+.SpouseInfo,
+.ChilderInfo,
+.SiblingInfo,
+.Elementary,
+.HighSchool,
+.GraduateSchool{
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.Mfullname,
+.Ffullname,
+.Sfullname{
+    grid-area: fullname;
+}
+.Mbirthday,
+.Fbirthday,
+.Sbirthday{
+    grid-area: birthday;
+}
+.Mbirthplace,
+.Fbirthplace,
+.Sbirthplace{
+    grid-area: birthplace;
+}
+.Moccupation,
+.Foccupation,
+.Soccupation{
+    grid-area: occupation;
+}
+.Memployername,
+.Femployername,
+.Semployername{
+    grid-area: employername;
+}
+.Memployeradd,
+.Femployeradd,
+.Semployeradd{
+    grid-area: employeradd;
+}
+
+.MothersMaiden,
+.Father,
+.Spouse{
+    display: grid;
+    grid-template-areas: 
+    'fullname fullname birthday birthplace birthplace'
+    'occupation employername employername employeradd employeradd'
+    ;
+    gap: 2rem;
+}
+
+
+/* Children and Siblings flex style */
+.ChildrenGroupHeader,
+.SiblingGroupHeader{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+}
+.ChildrenGroupHeader img,
+.SiblingGroupHeader img{
+    max-width: 2rem;
+    cursor: pointer;
+}
+.ChildrenDetails,
+.SiblingDetails{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: 2rem;
+
+}
+.ChildrenDetails input,
+.SiblingDetails input{
+    width: 100%;
+}
+
+/* Educational Background flex style */
+.ElementaryDetails,
+.HighSchoolDetails,
+.GraduateSchoolDetails{
+    display:  flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: 2rem;
+}
+.ElementaryDetails input,
+.HighSchoolDetails input,
+.GraduateSchoolDetails input{
+    width: 100%;
+}
+
+.EducationalInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+
+
+
+/* btn */
+.cont_btn{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #EEFCF4;
+}
+
+
+/* Style the input fields */
+.input-text {
+    border-radius: 0.5rem;
+    position: relative;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input-text:required {
+    background-color: #f9f9f9;
+}
+
+.input-text:invalid {
+    border-color: #ff978c; 
+    background-color: #f2dede; 
+}
+
+
+.input-text:valid {
+    border-color: #2ecc71; 
+    background-color: #eafaf1; 
+}
+
+
+select.input-text {
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+select.input-text:invalid {
+    border-color: #ff978c;
+    background-color: #f2dede;
+}
+
+select.input-text:valid {
+    border-color: #2ecc71;
+    background-color: #eafaf1;
+}
+
+.input-text:focus {
+    outline: none; 
+    border-color: #f9f9f9; 
+}
+

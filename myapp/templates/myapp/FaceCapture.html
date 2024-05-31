@@ -1,0 +1,184 @@
+{% comment %} {% extends "myapp/base.html" %} {% endcomment %}
+{% load static %}
+
+{% block content %} 
+{% comment %} {% include 'myapp/navbar.html' %} {% endcomment %}
+
+<link href= "{%static 'css/backdrop.css'%}" rel="stylesheet">
+<link href= "{%static 'css/FaceCapture.css'%}" rel="stylesheet">
+<link href= "{%static 'css/reset.css'%}" rel="stylesheet">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<div style="visibility:hidden;padding:3rem;">
+    dfd
+</div>
+
+    <div class="Wrapper">
+        <div class="Container">
+            {% include 'myapp/backdrop.html' %}
+            <div class="FormHeader">
+
+                <div class="EmbLogo">
+                    <img src="{% static 'images/PlainEMBLogo.png'%}" alt="EMBLOGO">   
+                </div>
+
+                <div class="Add_Cont">
+                    <h1 class="fs-medium fw-semi-bold text-primary-style">DOÑA JULIANA ST.,BRGY. 33, BACOLOD CITY</h1>
+                    <h6 class="fs-medium fw-regular text-primary-style">TEL., NO. (034)433-3554</h6>
+                </div>
+
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="step text-primary-style fs-medium fw-semi-bold" data-target="form-1">Employee Profile</div>
+                    <div class="step step-active text-primary-style fs-medium fw-semi-bold" data-target="form-2">Face Capture</div>
+                    <div class="step text-primary-style fs-medium fw-semi-bold" data-target="form-3">Verification</div>
+                </div>
+            </div>
+
+            <div class="FaceCaptureBody">
+                <div class="CaptureCamera">
+
+                    <div class="CaptureHeader">
+                        <h1 class="fs-secondary fw-bold text-dark-light">Face Capture Camera</h1>
+                    </div>
+                    <div class="MainCamera">
+                        <img id="videoElement" class="videoElement" src="{% url 'camera_feed' %}" alt="Real-Time Video Stream">
+                    </div>
+
+                    <div class="Capturebtn">
+                        <button class="StartCaptureBTN fs-medium fw-semi-bold text-dark-light" onclick="startCapture()">Start Capture</button>
+                    </div>
+
+                </div>
+
+                <div class="CaptureDetails">
+
+                    <div class="CaptureInstruction">
+                        <div class="InstructionHeader">
+                            <h1 class="fs-secondary fw-bold text-dark-light">Face Capture Instruction</h1>
+                        </div>
+                        <div class="InstructionBody fs-medium fw-semi-bold text-dark-light ">
+                            <p>Place the camera at eye level, keep your face centered, remove any accessories, maintain a neutral expression, and take multiple clear photos for best face recognition results.</p>
+                        </div>
+                    </div>
+
+                    <div class="CaptureImages">
+
+                         <div class="CaptImagesHeader">
+                            <h1 class="fs-secondary fw-bold text-dark-light">Captured Images</h1>
+                         </div>
+
+                         <div class="ImagesList">
+
+                         </div>
+            
+                    </div>
+
+                </div>
+                
+                <div class="btn-cont">
+
+                    <div class="Continue">
+                        <a href="{% url 'FaceCapture' %}" id="getStartedButton" class="fs-medium fw-bold">Continue -></a>
+                    </div>  
+    
+                </div>
+            </div>
+
+            <div id="loading-spinner" style="display: none;">
+                <div class="spinner"></div>
+            </div>
+            
+  
+        </div>
+    </div>
+
+    
+    
+    <script>
+         var video = document.getElementById('videoElement');
+        video.src = "{% url 'camera_feed' %}";
+        
+        video.onloadedmetadata = function() {
+            video.play();
+        };
+    </script>
+
+<script>
+     document.addEventListener('DOMContentLoaded', function() {
+        var personalInfo = localStorage.getItem('personalInfo');
+        if (personalInfo) {
+            var personalInfoObject = JSON.parse(personalInfo);
+            console.log(personalInfoObject);
+
+            // Access only the Surename
+            var surename = personalInfoObject.Surename;
+            console.log('Surename:', surename);
+
+            // // You can now use the surename variable as needed
+            // // For example, display it on the page
+            // var surenameElement = document.createElement('p');
+            // surenameElement.textContent = 'Surename: ' + surename;
+            // document.getElementById('faceCaptureContainer').appendChild(surenameElement);
+        }
+    });
+   
+    function startCapture() {
+        // Show the loading spinner
+        $('#loading-spinner').show();
+
+    
+        $.ajax({
+            type: "GET",
+            url: "{% url 'capture_image' %}",
+            success: function(response) {
+                // Hide the loading spinner
+                $('#loading-spinner').hide();
+    
+                if (response.success) {
+                   
+                    var imageUrl = "/media/snapshots/" + response.filename;
+                    var imgElement = `<img src="${imageUrl}" alt="Captured Face" class="captured-image">`;
+    
+                    $('.ImagesList').append(imgElement);
+    
+                    $(document).ready(function() {
+                        swal({
+                            title: "Captured Successfully!",
+                            text: response.successs,
+                            icon: "success",
+                        });
+                    });
+                } else {
+                    $(document).ready(function() {
+                        swal({
+                            title: "Failed Capture",
+                            text: response.error,
+                            icon: "error",
+                        });
+                    });
+                }
+            },
+            error: function() {
+                // Hide the loading spinner in case of error as well
+                $('#loading-spinner').hide();
+    
+                $(document).ready(function() {
+                    swal({
+                        title: "Error",
+                        text: "An error occurred while capturing the image.",
+                        icon: "error",
+                    });
+                });
+            }
+        });
+    }
+    </script>
+    
+    {% endblock content %}

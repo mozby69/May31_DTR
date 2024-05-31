@@ -1,0 +1,126 @@
+/* backdrop.css */
+
+/* Spread Circle */
+.SpreadCircle {
+    position: absolute;
+    width: 10rem;
+    height: 10rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    opacity: 100%;
+    z-index: -9999;
+}
+.SpreadCircle1,
+.SpreadCircle2,
+.SpreadCircle4,
+.SpreadCircle5,
+.SpreadCircle7,
+.SpreadCircle10,
+.SpreadCircle11,
+.SpreadCircle14 {
+    background-color: #EEFCF4;
+}
+.SpreadCircle3,
+.SpreadCircle6,
+.SpreadCircle8,
+.SpreadCircle9,
+.SpreadCircle13 {
+    border: 0.5rem solid #EEFCF4;
+}
+.SpreadCircle1 {
+    width: 10rem;
+    height: 10rem;
+    top: -5%;
+    left: 25%;
+}
+.SpreadCircle2 {
+    width: 10rem;
+    height: 10rem;
+    bottom: 0;
+    right: 22%;
+}
+.SpreadCircle3 {
+    width: 5rem;
+    height: 5rem;
+    top: 10%;
+    left: 2%;
+}
+.SpreadCircle4 {
+    width: 5rem;
+    height: 5rem;
+    right: 25%;
+}
+.SpreadCircle5 {
+    width: 7rem;
+    height: 7rem;
+    right: 2%;
+    top: 10%;
+}
+.SpreadCircle6 {
+    width: 6rem;
+    height: 6rem;
+    top: 30%;
+    right: 20%;
+}
+.SpreadCircle7 {
+    width: 7.5rem;
+    height: 7.5rem;
+    top: 45%;
+    right: 5%;
+}
+.SpreadCircle8 {
+    width:7rem;
+    height: 7rem;
+    top: 38%;
+    left: 15%;
+}
+.SpreadCircle9 {
+    width: 4rem;
+    height: 4rem;
+    bottom: 30%;
+    left: 5%;
+}
+.SpreadCircle10 {
+    width: 6rem;
+    height: 6rem;
+    bottom: 5%;
+    left: 2%;
+}
+.SpreadCircle11 {
+    width: 4rem;
+    height: 4rem;
+    bottom: 20%;
+    left: 25%;
+}
+.SpreadCircle13{
+    width: 8rem;
+    height: 8rem;
+    left: 42%;
+    bottom: 50%;
+}
+.SpreadCircle14{
+    width: 2.5rem;
+    height: 2.5rem;
+    left: 50%;
+    bottom: 20%;
+}
+
+/* Loading */
+.CircleEffect {
+    animation: CircleEffect 2s ease-in-out infinite;
+}
+
+@keyframes CircleEffect {
+    0% {
+        transform: scale(1);
+        margin-bottom: 1.2rem;
+    }
+    50% {
+        transform: scale(0.9);
+        margin-top: 1rem;
+    }
+    100% {
+        transform: scale(1);
+        margin-bottom: 1.2rem;
+    }
+}
